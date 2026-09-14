@@ -85,8 +85,14 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(40px,7vw,80px) clamp(36px,6vw,64px)}
-.hero .wrap{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,56px);align-items:center}
-@media(min-width:880px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:0;align-items:end}
+.hero-text{padding-bottom:20px}
+.hero-rule{grid-column:1/-1;border:0;border-top:1px solid var(--rule);margin:0;width:100%}
+.portrait{margin-top:38px}
+@media(min-width:880px){
+  .hero .wrap{grid-template-columns:1.05fr .95fr;column-gap:clamp(32px,5vw,56px)}
+  .portrait{margin-top:0}
+}
 
 .name{
   font-size:clamp(72px,17vw,168px);
@@ -102,7 +108,7 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
 }
 .lede b{font-weight:500;color:var(--ink)}
 .sig{
-  margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);
+  grid-column:1;margin:0;padding-top:22px;
   font-family:"Bodoni Moda",serif;font-style:italic;font-size:26px;color:var(--raspberry);
 }
 .sig small{display:block;font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:10.5px;
@@ -111,7 +117,7 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
 /* ---------- plate ---------- */
 .portrait{
   margin:0 auto;position:relative;display:flex;justify-content:center;align-items:flex-end;
-  max-width:300px;border-bottom:1px solid var(--mauve);
+  max-width:300px;
 }
 .portrait::before{
   content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
@@ -230,17 +236,18 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
 
 <div class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-text">
       <span class="eyebrow">Pomeranian &middot; House of Vanderpump</span>
       <h1 class="name">Giggy</h1>
       <span class="dates">GIGOLO VANDERPUMP &nbsp;/&nbsp; c. 2009 &mdash; 12 DECEMBER 2020</span>
       <p class="lede">He had <b>alopecia</b>, so he was always cold, so he always wore something. Ten years of television later, the sweater was no longer a treatment. It was a <b>look</b>.</p>
-      <p class="sig">&ldquo;Tum Ti Tum Tum.&rdquo;<small>Signed, every tweet</small></p>
     </div>
     <figure class="portrait">
       <img src="images/giggy-bonnet.png" width="300" height="300"
            alt="Giggy in a magenta ruffled bonnet fastened with a jewelled brooch">
     </figure>
+    <hr class="hero-rule">
+    <p class="sig">&ldquo;Tum Ti Tum Tum.&rdquo;<small>Signed, every tweet</small></p>
   </div>
 </div>
 
