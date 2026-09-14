@@ -25,7 +25,7 @@
   --serif:"Libre Bodoni",Didot,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
   --sans:"Jost","Avenir Next","Segoe UI",sans-serif;
-  --glow-grad:radial-gradient(circle closest-side,
+  --glow-grad:radial-gradient(ellipse closest-side,
     rgba(255,255,255,0.69) 0%,
     rgba(255,255,255,0.6486) 30%,
     rgba(255,255,255,0.5382) 50%,
@@ -50,7 +50,7 @@
     --raspberry-ink:#E892CD;
     --champagne:#D9AE55;
     --shadow:rgba(0,0,0,.45);
-    --glow-grad:radial-gradient(circle closest-side,
+    --glow-grad:radial-gradient(ellipse closest-side,
     rgba(224,108,188,0.42) 0%,
     rgba(224,108,188,0.3444) 20%,
     rgba(224,108,188,0.2436) 38%,
@@ -75,7 +75,7 @@
   --raspberry-ink:#E892CD;
   --champagne:#D9AE55;
   --shadow:rgba(0,0,0,.45);
-  --glow-grad:radial-gradient(circle closest-side,
+  --glow-grad:radial-gradient(ellipse closest-side,
     rgba(224,108,188,0.42) 0%,
     rgba(224,108,188,0.3444) 20%,
     rgba(224,108,188,0.2436) 38%,
@@ -151,8 +151,8 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
   max-width:300px;
 }
 .portrait::before{
-  content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
-  width:min(168%,504px);aspect-ratio:1;border-radius:50%;
+  content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+  width:min(168%,504px);height:94%;border-radius:50%;
   background:var(--glow-grad);
   filter:blur(16px);
 }
