@@ -138,11 +138,12 @@ section{padding-block:clamp(40px,6vw,68px)}
 
 /* ---------- wardrobe ---------- */
 .wardrobe{display:grid;grid-template-columns:1fr;gap:26px;align-items:start}
-@media(min-width:820px){.wardrobe{grid-template-columns:300px 1fr;gap:44px}}
+@media(min-width:820px){.wardrobe{grid-template-columns:340px 1fr;gap:44px}}
 .detail{min-width:0}
-.detail .plate-tag{margin-top:0;padding-top:0;border-top:0}
-.detail .plate-note{max-width:54ch;min-height:4.8em}
-.rack{display:flex;flex-direction:column;gap:8px;margin-top:22px;max-width:560px}
+.stage figcaption{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.stage .plate-tag{margin-top:0;padding-top:0;border-top:0}
+.stage .plate-note{max-width:none;min-height:6.6em;font-size:14px}
+.rack{display:flex;flex-direction:column;gap:8px;max-width:560px}
 .look{
   appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;
   background:var(--plate);border:1px solid var(--rule);padding:8px 16px 8px 8px;
@@ -242,10 +243,12 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
       <figure class="stage">
         <img id="stage" src="images/giggy-daytime.jpg"
              alt="Giggy walking outdoors in a pink quilted coat with black trim">
+        <figcaption>
+          <div class="plate-tag"><strong id="tagName">Daytime Pink</strong><span id="tagNo">No. 01</span></div>
+          <p class="plate-note" id="tagNote"></p>
+        </figcaption>
       </figure>
       <div class="detail">
-        <div class="plate-tag"><strong id="tagName">Daytime Pink</strong><span id="tagNo">No. 01</span></div>
-        <p class="plate-note" id="tagNote"></p>
         <div class="rack" id="rack"></div>
       </div>
     </div>
