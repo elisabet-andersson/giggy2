@@ -16,8 +16,6 @@
   --raspberry-ink:#9B0E48;
   --champagne:#A8791F;
   --shadow:rgba(29,17,23,.10);
-  --tux:#241620;
-  --tux-linen:#FBF4F5;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -33,8 +31,6 @@
     --raspberry-ink:#FF8AB2;
     --champagne:#D9AE55;
     --shadow:rgba(0,0,0,.45);
-    --tux:#0C0609;
-    --tux-linen:#EFDDE3;
   }
 }
 :root[data-theme="dark"]{
@@ -50,8 +46,6 @@
   --raspberry-ink:#FF8AB2;
   --champagne:#D9AE55;
   --shadow:rgba(0,0,0,.45);
-  --tux:#0C0609;
-  --tux-linen:#EFDDE3;
 }
 
 *{box-sizing:border-box}
@@ -114,8 +108,8 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
   box-shadow:0 22px 44px -28px var(--shadow);
   position:relative;
 }
-.plate .frame{border:1px solid var(--rule-soft);padding:10px 0 0;display:block}
-.plate svg{display:block;width:100%;max-width:100%;height:auto}
+.plate .frame{border:1px solid var(--rule-soft);display:block;overflow:hidden;background:var(--surface)}
+.plate .frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
 .plate-tag{
   display:flex;justify-content:space-between;align-items:baseline;gap:12px;
   margin-top:14px;padding-top:12px;border-top:1px solid var(--rule-soft);
@@ -141,7 +135,7 @@ section{padding-block:clamp(40px,6vw,68px)}
   padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;
   transition:border-color .2s, transform .2s, background .2s;
 }
-.look svg{display:block;width:100%;height:auto}
+.look img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center;background:var(--surface)}
 .look .no{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:var(--mauve)}
 .look .nm{font-family:"Bodoni Moda",serif;font-size:17px;line-height:1.15}
 .look:hover{border-color:var(--raspberry);transform:translateY(-3px)}
@@ -218,8 +212,8 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
       <p class="sig">&ldquo;Tum Ti Tum Tum.&rdquo;<small>Signed, every tweet</small></p>
     </div>
     <figure class="plate" style="margin:0">
-      <span class="frame" id="stage"></span>
-      <div class="plate-tag"><strong id="tagName">The House Knit</strong><span id="tagNo">No. 01</span></div>
+      <span class="frame"><img id="stage" src="images/giggy-daytime.jpg" alt="Giggy walking outdoors in a pink quilted coat with black trim"></span>
+      <div class="plate-tag"><strong id="tagName">Daytime Pink</strong><span id="tagNo">No. 01</span></div>
       <figcaption class="plate-note" id="tagNote"></figcaption>
     </figure>
   </div>
@@ -284,100 +278,25 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
 <footer>
   <div class="wrap">
     <span class="tum">Tum Ti Tum Tum.</span>
-    <p class="fine">A fan page. Not affiliated with Lisa Vanderpump, Vanderpump Dogs, or Bravo. Every drawing here is an illustration, because the good photographs belong to someone else.</p>
+    <p class="fine">A fan page. Not affiliated with Lisa Vanderpump, Vanderpump Dogs, or Bravo. Photographs are reproduced here in tribute and remain the property of their respective owners.</p>
   </div>
 </footer>
 
 <script>
-const BODY = "M100 118 C142 118 164 142 164 174 C164 208 136 230 100 230 C64 230 36 208 36 174 C36 142 58 118 100 118 Z";
-
 const LOOKS = [
-  { no:"No. 01", name:"The House Knit",
-    note:"The staple. A sweater in the house colour, worn indoors, outdoors and on camera. Prescribed by circumstance, kept on by choice." },
-  { no:"No. 02", name:"Black Tie",
-    note:"Bow ties, plural. He owned enough of them to rotate, which is more than can be said for most of the cast." },
-  { no:"No. 03", name:"Full Evening",
-    note:"The award-season silhouette: dinner jacket, white front, black tie. Worn to collect a Golden Collar in 2012." },
-  { no:"No. 04", name:"The Travelling Coat",
-    note:"For transit, which in his case meant being carried. Structured shoulders, double-breasted, feet never once used." }
+  { no:"No. 01", name:"Daytime Pink", img:"images/giggy-daytime.jpg",
+    alt:"Giggy walking outdoors in a pink quilted coat with black trim",
+    note:"Everyday outerwear. A quilted coat in the house colour, piped in black, worn for the walk he was mostly carried through." },
+  { no:"No. 02", name:"The Bonnet", img:"images/giggy-bonnet.png",
+    alt:"Giggy in a magenta ruffled bonnet fastened with a jewelled brooch",
+    note:"Magenta silk, ruffled at the brim, fastened with a jewel at the throat. Proof the wardrobe was never only about keeping warm." },
+  { no:"No. 03", name:"Black Tie", img:"images/giggy-fancy.jpg",
+    alt:"Giggy in a sequinned black bow tie over a white shirt front",
+    note:"Sequinned bow tie, white shirt front, black jacket. He owned enough bow ties to rotate them, which is more than most of the cast managed." },
+  { no:"No. 04", name:"The Red Carpet", img:"images/giggy-red-carpet.jpg",
+    alt:"Giggy on a red carpet in a blue velvet suit with white ruffled cuffs and collar",
+    note:"Blue velvet, four sleeves, ruffled cuffs and a pointed collar. Tailored for a dog with four legs and somewhere to be." }
 ];
-
-function garment(i){
-  if(i===0) return `
-    <rect x="16" y="130" width="168" height="124" fill="var(--raspberry)"/>
-    <g stroke="var(--plate)" stroke-opacity=".5" stroke-width="2.2" fill="none">
-      <path d="M16 206 H184"/>
-      <path d="M52 206 V254 M70 206 V254 M88 206 V254 M106 206 V254 M124 206 V254 M142 206 V254"/>
-      <path d="M60 160 l14 14 14-14 M112 160 l14 14 14-14"/>
-    </g>`;
-  if(i===1) return "";
-  if(i===2) return `
-    <rect x="16" y="124" width="168" height="130" fill="var(--tux)"/>
-    <path d="M100 124 L83 176 L100 210 L117 176 Z" fill="var(--tux-linen)"/>
-    <g stroke="var(--tux-linen)" stroke-opacity=".45" stroke-width="2" fill="none">
-      <path d="M100 126 L66 148 L84 194"/><path d="M100 126 L134 148 L116 194"/>
-    </g>`;
-  return `
-    <rect x="16" y="128" width="168" height="126" fill="var(--mauve)"/>
-    <g stroke="var(--plate)" stroke-opacity=".45" stroke-width="2.2" fill="none">
-      <path d="M100 128 L70 152 L80 200"/><path d="M100 128 L130 152 L120 200"/>
-      <path d="M100 150 V226"/>
-    </g>
-    <g fill="var(--plate)" fill-opacity=".85">
-      <circle cx="84" cy="172" r="4"/><circle cx="116" cy="172" r="4"/>
-      <circle cx="84" cy="196" r="4"/><circle cx="116" cy="196" r="4"/>
-    </g>`;
-}
-
-function collar(i){
-  if(i===0) return `<path d="M60 124 C74 142 126 142 140 124 C140 138 128 150 100 150 C72 150 60 138 60 124 Z" fill="var(--raspberry)" stroke="var(--ink)" stroke-width="2.4"/>`;
-  if(i===3) return `<path d="M62 126 C76 144 124 144 138 126 C138 140 126 152 100 152 C74 152 62 140 62 126 Z" fill="var(--mauve)" stroke="var(--ink)" stroke-width="2.4"/>`;
-  return "";
-}
-
-function bow(i){
-  if(i!==1 && i!==2) return "";
-  const fill = i===2 ? "var(--tux)" : "var(--raspberry)";
-  return `<g stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round">
-      <path d="M99 143 L75 131 L75 155 Z" fill="${fill}"/>
-      <path d="M101 143 L125 131 L125 155 Z" fill="${fill}"/>
-      <rect x="93" y="136" width="14" height="14" rx="4" fill="${fill}"/>
-    </g>`;
-}
-
-let uid = 0;
-function croquis(i){
-  const id = "clip" + (uid++);
-  return `<svg viewBox="0 0 200 252" role="img" aria-label="Illustration of Giggy the Pomeranian wearing ${LOOKS[i].name}">
-    <defs><clipPath id="${id}"><path d="${BODY}"/></clipPath></defs>
-    <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
-      <path d="M140 192 C170 192 192 166 192 132 C192 106 176 88 156 92 C170 112 168 144 149 162 C141 170 139 182 140 192 Z" fill="var(--plate)"/>
-      <path d="M157 178 C173 162 181 136 175 114" stroke-opacity=".3"/>
-      <path d="M148 184 C162 170 170 142 166 118" stroke-opacity=".3"/>
-      <path d="${BODY}" fill="var(--plate)"/>
-      <g clip-path="url(#${id})" stroke="none">${garment(i)}</g>
-      <path d="${BODY}"/>
-      <ellipse cx="76" cy="226" rx="14" ry="9" fill="var(--plate)"/>
-      <ellipse cx="124" cy="226" rx="14" ry="9" fill="var(--plate)"/>
-      ${collar(i)}
-      <path d="M70 66 C66 48 70 33 77 29 C88 37 96 48 101 58 Z" fill="var(--plate)"/>
-      <path d="M130 66 C134 48 130 33 123 29 C112 37 104 48 99 58 Z" fill="var(--plate)"/>
-      <circle cx="100" cy="88" r="46" fill="var(--plate)"/>
-      <path d="M56 104 C58 80 66 64 80 55" stroke-opacity=".3"/>
-      <path d="M144 104 C142 80 134 64 120 55" stroke-opacity=".3"/>
-      <path d="M60 118 C68 132 76 139 87 142" stroke-opacity=".3"/>
-      <path d="M140 118 C132 132 124 139 113 142" stroke-opacity=".3"/>
-      <ellipse cx="100" cy="108" rx="21" ry="15" fill="var(--plate)"/>
-      <circle cx="80" cy="86" r="5.5" fill="var(--ink)" stroke="none"/>
-      <circle cx="120" cy="86" r="5.5" fill="var(--ink)" stroke="none"/>
-      <circle cx="78" cy="84" r="1.8" fill="var(--plate)" stroke="none"/>
-      <circle cx="118" cy="84" r="1.8" fill="var(--plate)" stroke="none"/>
-      <path d="M92 100 C92 95 108 95 108 100 C108 106 103 110 100 110 C97 110 92 106 92 100 Z" fill="var(--ink)" stroke="none"/>
-      <path d="M100 110 V115 M100 115 C96 121 90 120 88 116 M100 115 C104 121 110 120 112 116"/>
-      ${bow(i)}
-    </g>
-  </svg>`;
-}
 
 const stage = document.getElementById("stage");
 const rack = document.getElementById("rack");
@@ -386,17 +305,19 @@ const tagNo = document.getElementById("tagNo");
 const tagNote = document.getElementById("tagNote");
 
 rack.innerHTML = LOOKS.map((l, i) => `
-  <button class="look" type="button" id="look-${i}" data-i="${i}" aria-pressed="${i===0}">
-    ${croquis(i)}
+  <button class="look" type="button" id="look-${i}" data-i="${i}" aria-pressed="${i === 0}">
+    <img src="${l.img}" alt="${l.alt}" loading="lazy">
     <span class="no">${l.no}</span>
     <span class="nm">${l.name}</span>
   </button>`).join("");
 
 function dress(i){
-  stage.innerHTML = croquis(i);
-  tagName.textContent = LOOKS[i].name;
-  tagNo.textContent = LOOKS[i].no;
-  tagNote.textContent = LOOKS[i].note;
+  const l = LOOKS[i];
+  stage.src = l.img;
+  stage.alt = l.alt;
+  tagName.textContent = l.name;
+  tagNo.textContent = l.no;
+  tagNote.textContent = l.note;
   rack.querySelectorAll(".look").forEach(b =>
     b.setAttribute("aria-pressed", String(Number(b.dataset.i) === i)));
 }
