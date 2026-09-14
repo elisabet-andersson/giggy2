@@ -21,8 +21,15 @@
   --raspberry-ink:#9B0E48;
   --champagne:#A8791F;
   --shadow:rgba(29,17,23,.10);
-  --glow:rgba(195,23,94,.20);
-  --glow-core:rgba(195,23,94,.15);
+  --glow-grad:radial-gradient(circle,
+    rgba(195,23,94,0.2) 0%,
+    rgba(195,23,94,0.164) 20%,
+    rgba(195,23,94,0.116) 38%,
+    rgba(195,23,94,0.072) 55%,
+    rgba(195,23,94,0.038) 70%,
+    rgba(195,23,94,0.017) 82%,
+    rgba(195,23,94,0.005) 92%,
+    rgba(195,23,94,0) 100%);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -38,8 +45,15 @@
     --raspberry-ink:#FF8AB2;
     --champagne:#D9AE55;
     --shadow:rgba(0,0,0,.45);
-    --glow:rgba(255,95,148,.30);
-    --glow-core:rgba(255,124,168,.24);
+    --glow-grad:radial-gradient(circle,
+    rgba(255,124,168,0.32) 0%,
+    rgba(255,124,168,0.2624) 20%,
+    rgba(255,124,168,0.1856) 38%,
+    rgba(255,124,168,0.1152) 55%,
+    rgba(255,124,168,0.0608) 70%,
+    rgba(255,124,168,0.0272) 82%,
+    rgba(255,124,168,0.008) 92%,
+    rgba(255,124,168,0) 100%);
   }
 }
 :root[data-theme="dark"]{
@@ -55,8 +69,15 @@
   --raspberry-ink:#FF8AB2;
   --champagne:#D9AE55;
   --shadow:rgba(0,0,0,.45);
-  --glow:rgba(255,95,148,.30);
-  --glow-core:rgba(255,124,168,.24);
+  --glow-grad:radial-gradient(circle,
+    rgba(255,124,168,0.32) 0%,
+    rgba(255,124,168,0.2624) 20%,
+    rgba(255,124,168,0.1856) 38%,
+    rgba(255,124,168,0.1152) 55%,
+    rgba(255,124,168,0.0608) 70%,
+    rgba(255,124,168,0.0272) 82%,
+    rgba(255,124,168,0.008) 92%,
+    rgba(255,124,168,0) 100%);
 }
 
 *{box-sizing:border-box}
@@ -118,11 +139,10 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
   max-width:300px;
 }
 .portrait::before{
-  content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
-  width:min(128%,384px);aspect-ratio:1;border-radius:50%;
-  background:
-    radial-gradient(circle,var(--glow-core) 0%,transparent 52%),
-    radial-gradient(circle,var(--glow) 0%,transparent 74%);
+  content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+  width:min(132%,396px);aspect-ratio:1;
+  background:var(--glow-grad);
+  filter:blur(16px);
 }
 .portrait img{position:relative;display:block;width:100%;max-width:300px;height:auto}
 
