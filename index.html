@@ -351,7 +351,9 @@ function croquis(i){
   return `<svg viewBox="0 0 200 252" role="img" aria-label="Illustration of Giggy the Pomeranian wearing ${LOOKS[i].name}">
     <defs><clipPath id="${id}"><path d="${BODY}"/></clipPath></defs>
     <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
-      <path d="M150 190 C180 180 194 146 183 120 C172 146 151 153 140 174 Z" fill="var(--plate)"/>
+      <path d="M140 192 C170 192 192 166 192 132 C192 106 176 88 156 92 C170 112 168 144 149 162 C141 170 139 182 140 192 Z" fill="var(--plate)"/>
+      <path d="M157 178 C173 162 181 136 175 114" stroke-opacity=".3"/>
+      <path d="M148 184 C162 170 170 142 166 118" stroke-opacity=".3"/>
       <path d="${BODY}" fill="var(--plate)"/>
       <g clip-path="url(#${id})" stroke="none">${garment(i)}</g>
       <path d="${BODY}"/>
