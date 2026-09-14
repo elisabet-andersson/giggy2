@@ -6,20 +6,21 @@
 <title>Maison Giggy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,800;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,800;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap">
 <style>
 :root{
-  --paper:#FAF1F2;
-  --surface:#F3E4E7;
-  --plate:#FFF8F8;
-  --ink:#1D1117;
-  --ink-soft:#523A43;
-  --mauve:#8A6874;
-  --rule:#DEC5CB;
-  --rule-soft:#EBD8DC;
-  --raspberry:#C3175E;
+  --paper:#FFF5F8;
+  --surface:#FBE7EF;
+  --plate:#FFFBFC;
+  --ink:#3B1226;
+  --heading:#7A2B4E;
+  --ink-soft:#6A4355;
+  --mauve:#8C5C73;
+  --rule:#EFD1DE;
+  --rule-soft:#F8E5EC;
+  --raspberry:#B3124F;
   --raspberry-ink:#9B0E48;
-  --champagne:#A8791F;
+  --champagne:#8A6414;
   --shadow:rgba(29,17,23,.10);
   --glow-grad:radial-gradient(circle,
     rgba(195,23,94,0.2) 0%,
@@ -37,6 +38,7 @@
     --surface:#21141A;
     --plate:#291921;
     --ink:#F7E8EB;
+    --heading:#F0D2DD;
     --ink-soft:#D6B8C0;
     --mauve:#AD8B97;
     --rule:#3D2630;
@@ -61,6 +63,7 @@
   --surface:#21141A;
   --plate:#291921;
   --ink:#F7E8EB;
+  --heading:#F0D2DD;
   --ink-soft:#D6B8C0;
   --mauve:#AD8B97;
   --rule:#3D2630;
@@ -89,10 +92,14 @@ body{
   font-weight:300;
   font-size:17px;
   line-height:1.65;
+  font-optical-sizing:auto;
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1080px;margin:0 auto;padding-inline:24px;padding-block:0}
-h1,h2,h3{font-family:"Bodoni Moda","Didot","Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0}
+h1,h2,h3{
+  font-family:"Bodoni Moda","Didot","Times New Roman",serif;font-weight:600;
+  color:var(--heading);text-wrap:balance;margin:0;
+}
 p{margin:0}
 a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset:3px}
 
@@ -105,7 +112,7 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
 /* ---------- masthead ---------- */
 .mast{border-bottom:1px solid var(--rule);padding-block:18px}
 .mast .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-.mast .house{font-family:"Bodoni Moda",serif;font-size:15px;letter-spacing:.32em;text-transform:uppercase}
+.mast .house{font-family:"Bodoni Moda",serif;font-weight:500;font-size:15px;letter-spacing:.32em;text-transform:uppercase}
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(56px,9vw,112px) clamp(48px,8vw,92px)}
@@ -128,7 +135,7 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
 .lede b{font-weight:500;color:var(--ink)}
 .sig{
   grid-column:1;margin:0;padding-top:34px;
-  font-family:"Bodoni Moda",serif;font-style:italic;font-size:26px;color:var(--raspberry);
+  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:26px;color:var(--raspberry);
 }
 .sig small{display:block;font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:10.5px;
   letter-spacing:.2em;text-transform:uppercase;color:var(--mauve);margin-top:8px}
@@ -186,7 +193,7 @@ section{padding-block:clamp(40px,6vw,68px)}
   transition:border-color .2s, background .2s;
 }
 .look img{display:block;width:54px;height:54px;object-fit:cover;object-position:center;background:var(--surface)}
-.look .nm{font-family:"Bodoni Moda",serif;font-size:18px;line-height:1.15}
+.look .nm{font-family:"Bodoni Moda",serif;font-weight:500;font-size:18px;line-height:1.15}
 .look .no{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:var(--mauve)}
 .look:hover{border-color:var(--raspberry)}
 .look:focus-visible{outline:2px solid var(--raspberry);outline-offset:3px}
@@ -241,7 +248,7 @@ section{padding-block:clamp(40px,6vw,68px)}
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--rule);padding-block:32px 44px;margin-top:8px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
-footer .tum{font-family:"Bodoni Moda",serif;font-style:italic;font-size:22px;color:var(--raspberry)}
+footer .tum{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:22px;color:var(--raspberry)}
 footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
 
 /* ---------- desktop overrides: must sit after the base rules above ---------- */
