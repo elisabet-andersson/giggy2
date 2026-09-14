@@ -16,6 +16,7 @@
   --raspberry-ink:#9B0E48;
   --champagne:#A8791F;
   --shadow:rgba(29,17,23,.10);
+  --glow:rgba(195,23,94,.16);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -31,6 +32,7 @@
     --raspberry-ink:#FF8AB2;
     --champagne:#D9AE55;
     --shadow:rgba(0,0,0,.45);
+    --glow:rgba(255,95,148,.20);
   }
 }
 :root[data-theme="dark"]{
@@ -46,6 +48,7 @@
   --raspberry-ink:#FF8AB2;
   --champagne:#D9AE55;
   --shadow:rgba(0,0,0,.45);
+  --glow:rgba(255,95,148,.20);
 }
 
 *{box-sizing:border-box}
@@ -101,15 +104,22 @@ a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset
   letter-spacing:.2em;text-transform:uppercase;color:var(--mauve);margin-top:8px}
 
 /* ---------- plate ---------- */
-.plate{
-  background:var(--plate);
-  border:1px solid var(--rule);
-  padding:20px 20px 16px;
-  box-shadow:0 22px 44px -28px var(--shadow);
-  position:relative;
+.portrait{margin:0;position:relative;display:flex;justify-content:center;align-items:center}
+.portrait::before{
+  content:"";position:absolute;width:min(88%,360px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
 }
-.plate .frame{border:1px solid var(--rule-soft);display:block;overflow:hidden;background:var(--surface)}
-.plate .frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
+.portrait img{position:relative;display:block;width:100%;max-width:300px;height:auto}
+
+.stage{
+  margin:0;background:var(--plate);border:1px solid var(--rule);padding:12px;
+  max-width:340px;margin-inline:auto;
+  box-shadow:0 22px 44px -28px var(--shadow);
+}
+.stage img{
+  display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;
+  background:var(--surface);
+}
 .plate-tag{
   display:flex;justify-content:space-between;align-items:baseline;gap:12px;
   margin-top:14px;padding-top:12px;border-top:1px solid var(--rule-soft);
@@ -127,23 +137,27 @@ section{padding-block:clamp(40px,6vw,68px)}
 .head .eyebrow{margin-left:auto}
 
 /* ---------- wardrobe ---------- */
-.rack{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:760px){.rack{grid-template-columns:repeat(4,1fr)}}
+.wardrobe{display:grid;grid-template-columns:1fr;gap:26px;align-items:start}
+@media(min-width:820px){.wardrobe{grid-template-columns:300px 1fr;gap:44px}}
+.detail{min-width:0}
+.detail .plate-tag{margin-top:0;padding-top:0;border-top:0}
+.detail .plate-note{max-width:54ch;min-height:4.8em}
+.rack{display:flex;flex-direction:column;gap:8px;margin-top:22px;max-width:560px}
 .look{
   appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;
-  background:var(--plate);border:1px solid var(--rule);
-  padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;
-  transition:border-color .2s, transform .2s, background .2s;
+  background:var(--plate);border:1px solid var(--rule);padding:8px 16px 8px 8px;
+  display:grid;grid-template-columns:54px 1fr auto;gap:16px;align-items:center;
+  transition:border-color .2s, background .2s;
 }
-.look img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center;background:var(--surface)}
+.look img{display:block;width:54px;height:54px;object-fit:cover;object-position:center;background:var(--surface)}
+.look .nm{font-family:"Bodoni Moda",serif;font-size:18px;line-height:1.15}
 .look .no{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:var(--mauve)}
-.look .nm{font-family:"Bodoni Moda",serif;font-size:17px;line-height:1.15}
-.look:hover{border-color:var(--raspberry);transform:translateY(-3px)}
+.look:hover{border-color:var(--raspberry)}
 .look:focus-visible{outline:2px solid var(--raspberry);outline-offset:3px}
 .look[aria-pressed="true"]{border-color:var(--raspberry);background:var(--paper)}
 .look[aria-pressed="true"] .no{color:var(--raspberry)}
 .look[aria-pressed="true"] .nm{font-style:italic}
-@media(prefers-reduced-motion:reduce){.look,.look:hover{transition:none;transform:none}}
+@media(prefers-reduced-motion:reduce){.look{transition:none}}
 
 /* ---------- record ---------- */
 .record{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule)}
@@ -211,10 +225,9 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
       <p class="lede">He had <b>alopecia</b>, so he was always cold, so he always wore something. Ten years of television later, the sweater was no longer a treatment. It was a <b>look</b>.</p>
       <p class="sig">&ldquo;Tum Ti Tum Tum.&rdquo;<small>Signed, every tweet</small></p>
     </div>
-    <figure class="plate" style="margin:0">
-      <span class="frame"><img id="stage" src="images/giggy-daytime.jpg" alt="Giggy walking outdoors in a pink quilted coat with black trim"></span>
-      <div class="plate-tag"><strong id="tagName">Daytime Pink</strong><span id="tagNo">No. 01</span></div>
-      <figcaption class="plate-note" id="tagNote"></figcaption>
+    <figure class="portrait">
+      <img src="images/giggy-bonnet.png" width="300" height="300"
+           alt="Giggy in a magenta ruffled bonnet fastened with a jewelled brooch">
     </figure>
   </div>
 </div>
@@ -223,9 +236,19 @@ footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
   <div class="wrap">
     <div class="head">
       <h2>The Wardrobe</h2>
-      <span class="eyebrow">Select a look to dress him</span>
+      <span class="eyebrow">Four looks from the archive</span>
     </div>
-    <div class="rack" id="rack"></div>
+    <div class="wardrobe">
+      <figure class="stage">
+        <img id="stage" src="images/giggy-daytime.jpg"
+             alt="Giggy walking outdoors in a pink quilted coat with black trim">
+      </figure>
+      <div class="detail">
+        <div class="plate-tag"><strong id="tagName">Daytime Pink</strong><span id="tagNo">No. 01</span></div>
+        <p class="plate-note" id="tagNote"></p>
+        <div class="rack" id="rack"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -306,9 +329,9 @@ const tagNote = document.getElementById("tagNote");
 
 rack.innerHTML = LOOKS.map((l, i) => `
   <button class="look" type="button" id="look-${i}" data-i="${i}" aria-pressed="${i === 0}">
-    <img src="${l.img}" alt="${l.alt}" loading="lazy">
-    <span class="no">${l.no}</span>
+    <img src="${l.img}" alt="" loading="lazy">
     <span class="nm">${l.name}</span>
+    <span class="no">${l.no}</span>
   </button>`).join("");
 
 function dress(i){
