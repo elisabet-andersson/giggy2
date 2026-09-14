@@ -1,0 +1,409 @@
+<title>Maison Giggy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,800;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --paper:#FAF1F2;
+  --surface:#F3E4E7;
+  --plate:#FFF8F8;
+  --ink:#1D1117;
+  --ink-soft:#523A43;
+  --mauve:#8A6874;
+  --rule:#DEC5CB;
+  --rule-soft:#EBD8DC;
+  --raspberry:#C3175E;
+  --raspberry-ink:#9B0E48;
+  --champagne:#A8791F;
+  --shadow:rgba(29,17,23,.10);
+  --tux:#241620;
+  --tux-linen:#FBF4F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#150C10;
+    --surface:#21141A;
+    --plate:#291921;
+    --ink:#F7E8EB;
+    --ink-soft:#D6B8C0;
+    --mauve:#AD8B97;
+    --rule:#3D2630;
+    --rule-soft:#2E1C24;
+    --raspberry:#FF5F94;
+    --raspberry-ink:#FF8AB2;
+    --champagne:#D9AE55;
+    --shadow:rgba(0,0,0,.45);
+    --tux:#0C0609;
+    --tux-linen:#EFDDE3;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#150C10;
+  --surface:#21141A;
+  --plate:#291921;
+  --ink:#F7E8EB;
+  --ink-soft:#D6B8C0;
+  --mauve:#AD8B97;
+  --rule:#3D2630;
+  --rule-soft:#2E1C24;
+  --raspberry:#FF5F94;
+  --raspberry-ink:#FF8AB2;
+  --champagne:#D9AE55;
+  --shadow:rgba(0,0,0,.45);
+  --tux:#0C0609;
+  --tux-linen:#EFDDE3;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Jost","Avenir Next",Segoe UI,sans-serif;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px;padding-block:0}
+h1,h2,h3{font-family:"Bodoni Moda","Didot","Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--raspberry-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mauve);
+}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--rule);padding-block:18px}
+.mast .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.mast .house{font-family:"Bodoni Moda",serif;font-size:15px;letter-spacing:.32em;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(40px,7vw,80px) clamp(36px,6vw,64px)}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,56px);align-items:center}
+@media(min-width:880px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+
+.name{
+  font-size:clamp(72px,17vw,168px);
+  line-height:.86;letter-spacing:-.02em;font-weight:800;
+  margin-block:14px 0;padding-bottom:.14em;
+}
+.name em{font-style:italic;font-weight:400;color:var(--raspberry)}
+.dates{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;
+  color:var(--mauve);margin-top:6px;display:block;
+}
+.lede{
+  max-width:50ch;margin-top:20px;font-size:19px;line-height:1.6;color:var(--ink-soft);
+}
+.lede b{font-weight:500;color:var(--ink)}
+.sig{
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);
+  font-family:"Bodoni Moda",serif;font-style:italic;font-size:26px;color:var(--raspberry);
+}
+.sig small{display:block;font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:10.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--mauve);margin-top:8px}
+
+/* ---------- plate ---------- */
+.plate{
+  background:var(--plate);
+  border:1px solid var(--rule);
+  padding:20px 20px 16px;
+  box-shadow:0 22px 44px -28px var(--shadow);
+  position:relative;
+}
+.plate .frame{border:1px solid var(--rule-soft);padding:10px 0 0;display:block}
+.plate svg{display:block;width:100%;max-width:100%;height:auto}
+.plate-tag{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--rule-soft);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--mauve);
+  text-transform:uppercase;
+}
+.plate-tag strong{color:var(--ink);font-weight:500;letter-spacing:.14em}
+.plate-note{margin-top:10px;font-size:14.5px;line-height:1.55;color:var(--ink-soft);max-width:44ch}
+
+/* ---------- section shell ---------- */
+section{padding-block:clamp(40px,6vw,68px)}
+.band{background:var(--surface);border-block:1px solid var(--rule)}
+.head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.head h2{font-size:clamp(28px,4.4vw,42px);line-height:1.05}
+.head .eyebrow{margin-left:auto}
+
+/* ---------- wardrobe ---------- */
+.rack{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:760px){.rack{grid-template-columns:repeat(4,1fr)}}
+.look{
+  appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;
+  background:var(--plate);border:1px solid var(--rule);
+  padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;
+  transition:border-color .2s, transform .2s, background .2s;
+}
+.look svg{display:block;width:100%;height:auto}
+.look .no{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:var(--mauve)}
+.look .nm{font-family:"Bodoni Moda",serif;font-size:17px;line-height:1.15}
+.look:hover{border-color:var(--raspberry);transform:translateY(-3px)}
+.look:focus-visible{outline:2px solid var(--raspberry);outline-offset:3px}
+.look[aria-pressed="true"]{border-color:var(--raspberry);background:var(--paper)}
+.look[aria-pressed="true"] .no{color:var(--raspberry)}
+.look[aria-pressed="true"] .nm{font-style:italic}
+@media(prefers-reduced-motion:reduce){.look,.look:hover{transition:none;transform:none}}
+
+/* ---------- record ---------- */
+.record{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule)}
+@media(min-width:720px){.record{grid-template-columns:1fr 1fr;column-gap:56px}}
+.row{
+  display:flex;align-items:baseline;gap:10px;
+  padding-block:13px;border-bottom:1px solid var(--rule-soft);
+}
+.row dt{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mauve);white-space:nowrap;
+}
+.row .leader{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px)}
+.row dd{margin:0;font-size:15.5px;text-align:right;font-variant-numeric:tabular-nums}
+.row dd .honor{color:var(--champagne);font-weight:500}
+
+/* ---------- chronology ---------- */
+.chrono{display:grid;gap:0;margin-top:4px}
+.ev{
+  display:grid;grid-template-columns:76px 1fr;gap:20px;align-items:start;
+  padding-block:18px;border-top:1px solid var(--rule);
+}
+.ev:last-child{border-bottom:1px solid var(--rule)}
+.ev .yr{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;color:var(--raspberry);padding-top:4px}
+.ev h3{font-size:20px;font-weight:600;line-height:1.25}
+.ev p{color:var(--ink-soft);font-size:15.5px;margin-top:3px;max-width:62ch}
+.ev.last .yr{color:var(--mauve)}
+
+/* ---------- legacy ---------- */
+.legacy .wrap{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+@media(min-width:820px){.legacy .wrap{grid-template-columns:1.15fr .85fr}}
+.quote{margin:0}
+.quote blockquote{
+  margin:0;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;
+  font-size:clamp(24px,3.4vw,34px);line-height:1.3;text-wrap:balance;
+}
+.quote figcaption{
+  margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--mauve);
+}
+.aside p{color:var(--ink-soft);font-size:16px}
+.aside p + p{margin-top:14px}
+.aside h3{font-size:22px;margin-bottom:10px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding-block:32px 44px;margin-top:8px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+footer .tum{font-family:"Bodoni Moda",serif;font-style:italic;font-size:22px;color:var(--raspberry)}
+footer .fine{font-size:13px;color:var(--mauve);max-width:46ch}
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <span class="house">Maison Giggy</span>
+    <span class="eyebrow">An unofficial fan archive &middot; Beverly Hills</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Pomeranian &middot; House of Vanderpump</span>
+      <h1 class="name">Gig<em>gy</em></h1>
+      <span class="dates">GIGOLO VANDERPUMP &nbsp;/&nbsp; c. 2009 &mdash; 12 DECEMBER 2020</span>
+      <p class="lede">He had <b>alopecia</b>, so he was always cold, so he always wore something. Ten years of television later, the sweater was no longer a treatment. It was a <b>look</b>.</p>
+      <p class="sig">&ldquo;Tum Ti Tum Tum.&rdquo;<small>Signed, every tweet</small></p>
+    </div>
+    <figure class="plate" style="margin:0">
+      <span class="frame" id="stage"></span>
+      <div class="plate-tag"><strong id="tagName">The House Knit</strong><span id="tagNo">No. 01</span></div>
+      <figcaption class="plate-note" id="tagNote"></figcaption>
+    </figure>
+  </div>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <h2>The Wardrobe</h2>
+      <span class="eyebrow">Select a look to dress him</span>
+    </div>
+    <div class="rack" id="rack"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><h2>House Record</h2><span class="eyebrow">Filed under V</span></div>
+    <dl class="record">
+      <div class="row"><dt>Full name</dt><span class="leader"></span><dd>Gigolo Vanderpump</dd></div>
+      <div class="row"><dt>Breed</dt><span class="leader"></span><dd>Pomeranian</dd></div>
+      <div class="row"><dt>Household</dt><span class="leader"></span><dd>Lisa Vanderpump &amp; Ken Todd</dd></div>
+      <div class="row"><dt>Residence</dt><span class="leader"></span><dd>Villa Rosa, Beverly Hills</dd></div>
+      <div class="row"><dt>Debut</dt><span class="leader"></span><dd>RHOBH, season one, 2010</dd></div>
+      <div class="row"><dt>Credits</dt><span class="leader"></span><dd>RHOBH 2010&ndash;19 &middot; Vanderpump Rules 2013&ndash;20</dd></div>
+      <div class="row"><dt>Decoration</dt><span class="leader"></span><dd><span class="honor">Golden Collar Award, 2012</span></dd></div>
+      <div class="row"><dt>Following</dt><span class="leader"></span><dd>67,000 on Twitter</dd></div>
+      <div class="row"><dt>Constitution</dt><span class="leader"></span><dd>Alopecia, allergies, a heart condition</dd></div>
+      <div class="row"><dt>Signature</dt><span class="leader"></span><dd>Tum Ti Tum Tum</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Chronology</h2><span class="eyebrow">2009 &rarr; 2020</span></div>
+    <div class="chrono">
+      <div class="ev"><span class="yr">c. 2009</span><div><h3>Born</h3><p>A Pomeranian arrives at Villa Rosa and is named, with no irony whatsoever, Gigolo.</p></div></div>
+      <div class="ev"><span class="yr">2010</span><div><h3>Season one</h3><p>He appears in the first season of <em>The Real Housewives of Beverly Hills</em> and never really leaves. He is carried far more often than he walks.</p></div></div>
+      <div class="ev"><span class="yr">2012</span><div><h3>The Golden Collar</h3><p>Best dog in a reality series &mdash; an award he shares that year with the pit bull from <em>Pit Boss</em>. He accepts, as ever, in formalwear.</p></div></div>
+      <div class="ev"><span class="yr">2013</span><div><h3>Vanderpump Rules</h3><p>A second series, a second staff to ignore. His Twitter following passes sixty thousand.</p></div></div>
+      <div class="ev"><span class="yr">2016</span><div><h3>Vanderpump Dogs</h3><p>Lisa Vanderpump and Ken Todd found a dog rescue in his shadow; the West Hollywood centre opens the following spring. Thousands of dogs follow him out of it.</p></div></div>
+      <div class="ev last"><span class="yr">2020</span><div><h3>12 December</h3><p>After years of careful, round-the-clock keeping &mdash; the allergies, the heart &mdash; Giggy dies at home. &ldquo;My heart is broken,&rdquo; his owner writes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="legacy">
+  <div class="wrap">
+    <figure class="quote">
+      <blockquote>There&rsquo;s more portraits of Giggy, paintings and photographs, than there&rsquo;s ever been of me.</blockquote>
+      <figcaption>Lisa Vanderpump</figcaption>
+    </figure>
+    <div class="aside">
+      <h3>Why the sweaters</h3>
+      <p>Giggy had alopecia, an autoimmune condition that cost him his coat. Knitwear was not a bit &mdash; it was insulation. That the most photographed dog in Beverly Hills was also the one who needed the most looking after is, in the end, the whole story.</p>
+      <p>The foundation his family built in his name, <a href="https://www.vanderpumpdogs.org/" target="_blank" rel="noopener">Vanderpump Dogs</a>, has rehomed dogs by the thousand. Not a bad legacy for a dog who owned more bow ties than he had good years.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="tum">Tum Ti Tum Tum.</span>
+    <p class="fine">A fan page. Not affiliated with Lisa Vanderpump, Vanderpump Dogs, or Bravo. Every drawing here is an illustration, because the good photographs belong to someone else.</p>
+  </div>
+</footer>
+
+<script>
+const BODY = "M100 118 C142 118 164 142 164 174 C164 208 136 230 100 230 C64 230 36 208 36 174 C36 142 58 118 100 118 Z";
+
+const LOOKS = [
+  { no:"No. 01", name:"The House Knit",
+    note:"The staple. A sweater in the house colour, worn indoors, outdoors and on camera. Prescribed by circumstance, kept on by choice." },
+  { no:"No. 02", name:"Black Tie",
+    note:"Bow ties, plural. He owned enough of them to rotate, which is more than can be said for most of the cast." },
+  { no:"No. 03", name:"Full Evening",
+    note:"The award-season silhouette: dinner jacket, white front, black tie. Worn to collect a Golden Collar in 2012." },
+  { no:"No. 04", name:"The Travelling Coat",
+    note:"For transit, which in his case meant being carried. Structured shoulders, double-breasted, feet never once used." }
+];
+
+function garment(i){
+  if(i===0) return `
+    <rect x="16" y="130" width="168" height="124" fill="var(--raspberry)"/>
+    <g stroke="var(--plate)" stroke-opacity=".5" stroke-width="2.2" fill="none">
+      <path d="M16 206 H184"/>
+      <path d="M52 206 V254 M70 206 V254 M88 206 V254 M106 206 V254 M124 206 V254 M142 206 V254"/>
+      <path d="M60 160 l14 14 14-14 M112 160 l14 14 14-14"/>
+    </g>`;
+  if(i===1) return "";
+  if(i===2) return `
+    <rect x="16" y="124" width="168" height="130" fill="var(--tux)"/>
+    <path d="M100 124 L83 176 L100 210 L117 176 Z" fill="var(--tux-linen)"/>
+    <g stroke="var(--tux-linen)" stroke-opacity=".45" stroke-width="2" fill="none">
+      <path d="M100 126 L66 148 L84 194"/><path d="M100 126 L134 148 L116 194"/>
+    </g>`;
+  return `
+    <rect x="16" y="128" width="168" height="126" fill="var(--mauve)"/>
+    <g stroke="var(--plate)" stroke-opacity=".45" stroke-width="2.2" fill="none">
+      <path d="M100 128 L70 152 L80 200"/><path d="M100 128 L130 152 L120 200"/>
+      <path d="M100 150 V226"/>
+    </g>
+    <g fill="var(--plate)" fill-opacity=".85">
+      <circle cx="84" cy="172" r="4"/><circle cx="116" cy="172" r="4"/>
+      <circle cx="84" cy="196" r="4"/><circle cx="116" cy="196" r="4"/>
+    </g>`;
+}
+
+function collar(i){
+  if(i===0) return `<path d="M60 124 C74 142 126 142 140 124 C140 138 128 150 100 150 C72 150 60 138 60 124 Z" fill="var(--raspberry)" stroke="var(--ink)" stroke-width="2.4"/>`;
+  if(i===3) return `<path d="M62 126 C76 144 124 144 138 126 C138 140 126 152 100 152 C74 152 62 140 62 126 Z" fill="var(--mauve)" stroke="var(--ink)" stroke-width="2.4"/>`;
+  return "";
+}
+
+function bow(i){
+  if(i!==1 && i!==2) return "";
+  const fill = i===2 ? "var(--tux)" : "var(--raspberry)";
+  return `<g stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round">
+      <path d="M99 143 L75 131 L75 155 Z" fill="${fill}"/>
+      <path d="M101 143 L125 131 L125 155 Z" fill="${fill}"/>
+      <rect x="93" y="136" width="14" height="14" rx="4" fill="${fill}"/>
+    </g>`;
+}
+
+let uid = 0;
+function croquis(i){
+  const id = "clip" + (uid++);
+  return `<svg viewBox="0 0 200 252" role="img" aria-label="Illustration of Giggy the Pomeranian wearing ${LOOKS[i].name}">
+    <defs><clipPath id="${id}"><path d="${BODY}"/></clipPath></defs>
+    <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M150 190 C180 180 194 146 183 120 C172 146 151 153 140 174 Z" fill="var(--plate)"/>
+      <path d="${BODY}" fill="var(--plate)"/>
+      <g clip-path="url(#${id})" stroke="none">${garment(i)}</g>
+      <path d="${BODY}"/>
+      <ellipse cx="76" cy="226" rx="14" ry="9" fill="var(--plate)"/>
+      <ellipse cx="124" cy="226" rx="14" ry="9" fill="var(--plate)"/>
+      ${collar(i)}
+      <path d="M70 66 C66 48 70 33 77 29 C88 37 96 48 101 58 Z" fill="var(--plate)"/>
+      <path d="M130 66 C134 48 130 33 123 29 C112 37 104 48 99 58 Z" fill="var(--plate)"/>
+      <circle cx="100" cy="88" r="46" fill="var(--plate)"/>
+      <path d="M56 104 C58 80 66 64 80 55" stroke-opacity=".3"/>
+      <path d="M144 104 C142 80 134 64 120 55" stroke-opacity=".3"/>
+      <path d="M60 118 C68 132 76 139 87 142" stroke-opacity=".3"/>
+      <path d="M140 118 C132 132 124 139 113 142" stroke-opacity=".3"/>
+      <ellipse cx="100" cy="108" rx="21" ry="15" fill="var(--plate)"/>
+      <circle cx="80" cy="86" r="5.5" fill="var(--ink)" stroke="none"/>
+      <circle cx="120" cy="86" r="5.5" fill="var(--ink)" stroke="none"/>
+      <circle cx="78" cy="84" r="1.8" fill="var(--plate)" stroke="none"/>
+      <circle cx="118" cy="84" r="1.8" fill="var(--plate)" stroke="none"/>
+      <path d="M92 100 C92 95 108 95 108 100 C108 106 103 110 100 110 C97 110 92 106 92 100 Z" fill="var(--ink)" stroke="none"/>
+      <path d="M100 110 V115 M100 115 C96 121 90 120 88 116 M100 115 C104 121 110 120 112 116"/>
+      ${bow(i)}
+    </g>
+  </svg>`;
+}
+
+const stage = document.getElementById("stage");
+const rack = document.getElementById("rack");
+const tagName = document.getElementById("tagName");
+const tagNo = document.getElementById("tagNo");
+const tagNote = document.getElementById("tagNote");
+
+rack.innerHTML = LOOKS.map((l, i) => `
+  <button class="look" type="button" id="look-${i}" data-i="${i}" aria-pressed="${i===0}">
+    ${croquis(i)}
+    <span class="no">${l.no}</span>
+    <span class="nm">${l.name}</span>
+  </button>`).join("");
+
+function dress(i){
+  stage.innerHTML = croquis(i);
+  tagName.textContent = LOOKS[i].name;
+  tagNo.textContent = LOOKS[i].no;
+  tagNote.textContent = LOOKS[i].note;
+  rack.querySelectorAll(".look").forEach(b =>
+    b.setAttribute("aria-pressed", String(Number(b.dataset.i) === i)));
+}
+
+rack.addEventListener("click", e => {
+  const b = e.target.closest(".look");
+  if (b) dress(Number(b.dataset.i));
+});
+
+dress(0);
+</script>
